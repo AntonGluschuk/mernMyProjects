@@ -9,7 +9,6 @@ const Posts = () => {
   const classes = useStyles();
 
   console.log(posts);
-  console.log(posts);
 
   return (
     <>

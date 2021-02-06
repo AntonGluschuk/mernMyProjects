@@ -8,10 +8,10 @@ export const postsSlice = createSlice({
   },
   reducers: {
     fetchAllPosts: (state, action) => {
-      state.posts = action.payload;
+      state.loadedPosts = action.payload;
     },
     createPost: (state, action) => {
-      state.posts.push(action.payload);
+      state.loadedPosts.push(action.payload);
     },
   },
 });
@@ -24,5 +24,7 @@ export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
     dispatch(fetchAllPosts(data));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(fetchAllPosts([]));
+  }
 };
