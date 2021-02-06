@@ -11,7 +11,7 @@ export const postsSlice = createSlice({
       state.loadedPosts = action.payload;
     },
     createPost: (state, action) => {
-      state.loadedPosts = action.payload;
+      state.loadedPosts.push(action.payload);
     },
   },
 });
