@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { sendPost } from "../Posts/store/postsSlice";
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
