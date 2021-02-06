@@ -11,7 +11,7 @@ export const postsSlice = createSlice({
       state.loadedPosts = action.payload;
     },
     createPost: (state, action) => {
-      state.loadedPosts.push(action.payload);
+      state.loadedPosts = action.payload;
     },
   },
 });
@@ -25,6 +25,15 @@ export const getPosts = () => async (dispatch) => {
     const { data } = await api.fetchPosts();
     dispatch(fetchAllPosts(data));
   } catch (error) {
-    dispatch(fetchAllPosts([]));
+    console.log(error.message);
+  }
+};
+
+export const sendPost = (post) => async (dispatch) => {
+  try {
+    const { data } = await api.createPost(post);
+    dispatch(createPost(data));
+  } catch (error) {
+    console.log(error.message);
   }
 };
